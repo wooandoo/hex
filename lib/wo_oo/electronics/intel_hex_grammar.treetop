@@ -1,0 +1,56 @@
+require "treetop"
+
+module WOoo
+  module Electronics
+    grammar IntelHex
+      rule file
+        _lines:data_line* eof_line {
+          def eval
+            data = ""
+            _lines.elements.each do |line|
+              data += line.eval
+            end
+            data
+          end
+        }
+      end
+
+      rule data_line
+        !eof_line ":" _byte_count:byte_count _address:address _record_type:record_type _data:data _checksum:checksum "\n" {
+          def eval
+            line_data = _data.text_value
+            # unless line_data.size == 
+          end
+        }
+      end
+
+      rule byte_count
+        hex_value hex_value
+      end
+
+      rule address
+        hex_value hex_value hex_value hex_value
+      end
+
+      rule record_type
+        hex_value hex_value
+      end
+
+      rule data
+        (hex_value &checksum)*
+      end
+
+      rule checksum
+        hex_value hex_value
+      end
+
+      rule hex_value
+        [0-9] / [A-F]
+      end
+
+      rule eof_line
+        ":00000001FF"
+      end
+    end
+  end
+end
