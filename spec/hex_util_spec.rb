@@ -1,7 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require "wo_oo/util/hex"
 
-describe WOoo::Util::HexUtil do
+include WOoo::Util
+
+describe HexUtil do
   context "HEX 8" do
     before(:all) do
       @data = {
@@ -16,7 +18,7 @@ describe WOoo::Util::HexUtil do
     
     it "convert integer to hex" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex8(byte).should == hex
+        HexUtil.to_hex8(byte).should == hex
       end
     end
 
@@ -26,14 +28,14 @@ describe WOoo::Util::HexUtil do
       values = @data.keys
       expected_results = @data.values
 
-      WOoo::Util::HexUtil.to_hex8(values).should == expected_results
+      HexUtil.to_hex8(values).should == expected_results
     end
 
 
 
     it "convert string to hex" do
       @data.map{ |key, value| [key.to_s, value] }.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex8(byte).should == hex
+        HexUtil.to_hex8(byte).should == hex
       end
     end
 
@@ -41,7 +43,7 @@ describe WOoo::Util::HexUtil do
 
     it "convert hex to integer" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_i(hex).should == byte
+        HexUtil.to_i(hex).should == byte
       end
     end
     
@@ -51,7 +53,16 @@ describe WOoo::Util::HexUtil do
       values = @data.values
       expected_results = @data.keys
       
-      WOoo::Util::HexUtil.to_i(values).should == expected_results
+      HexUtil.to_i(values).should == expected_results
+    end
+    
+    
+    
+    it "convert string of hex to array of integer" do
+      values = @data.values.join
+      expected_results = @data.keys
+      
+      HexUtil.to_i(values, HexUtil::HEX8).should == expected_results
     end
   end
   
@@ -79,7 +90,7 @@ describe WOoo::Util::HexUtil do
     
     it "convert integer to hex" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex16(byte).should == hex
+        HexUtil.to_hex16(byte).should == hex
       end
     end
 
@@ -89,14 +100,14 @@ describe WOoo::Util::HexUtil do
       values = @data.keys
       expected_results = @data.values
 
-      WOoo::Util::HexUtil.to_hex16(values).should == expected_results
+      HexUtil.to_hex16(values).should == expected_results
     end
 
 
 
     it "convert string to hex" do
       @data.map{ |key, value| [key.to_s, value] }.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex16(byte).should == hex
+        HexUtil.to_hex16(byte).should == hex
       end
     end
 
@@ -104,7 +115,7 @@ describe WOoo::Util::HexUtil do
 
     it "convert hex to integer" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_i(hex).should == byte
+        HexUtil.to_i(hex).should == byte
       end
     end
     
@@ -114,7 +125,16 @@ describe WOoo::Util::HexUtil do
       values = @data.values
       expected_results = @data.keys
       
-      WOoo::Util::HexUtil.to_i(values).should == expected_results
+      HexUtil.to_i(values).should == expected_results
+    end
+    
+    
+    
+    it "convert string of hex to array of integer" do
+      values = @data.values.join
+      expected_results = @data.keys
+      
+      HexUtil.to_i(values, HexUtil::HEX16).should == expected_results
     end
   end
   
@@ -146,7 +166,7 @@ describe WOoo::Util::HexUtil do
     
     it "convert integer to hex" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex32(byte).should == hex
+        HexUtil.to_hex32(byte).should == hex
       end
     end
 
@@ -156,14 +176,14 @@ describe WOoo::Util::HexUtil do
       values = @data.keys
       expected_results = @data.values
 
-      WOoo::Util::HexUtil.to_hex32(values).should == expected_results
+      HexUtil.to_hex32(values).should == expected_results
     end
 
 
 
     it "convert string to hex" do
       @data.map{ |key, value| [key.to_s, value] }.each do |byte, hex|
-        WOoo::Util::HexUtil.to_hex32(byte).should == hex
+        HexUtil.to_hex32(byte).should == hex
       end
     end
 
@@ -171,7 +191,7 @@ describe WOoo::Util::HexUtil do
 
     it "convert hex to integer" do
       @data.each do |byte, hex|
-        WOoo::Util::HexUtil.to_i(hex).should == byte
+        HexUtil.to_i(hex).should == byte
       end
     end
     
@@ -181,7 +201,16 @@ describe WOoo::Util::HexUtil do
       values = @data.values
       expected_results = @data.keys
       
-      WOoo::Util::HexUtil.to_i(values).should == expected_results
+      HexUtil.to_i(values).should == expected_results
+    end
+    
+    
+    
+    it "convert string of hex to array of integer" do
+      values = @data.values.join
+      expected_results = @data.keys
+      
+      HexUtil.to_i(values, HexUtil::HEX32).should == expected_results
     end
   end
 end

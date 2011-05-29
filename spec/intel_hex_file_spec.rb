@@ -7,7 +7,8 @@ SAMPLE_BIN_DATA = [33, 70, 1, 54, 1, 33, 71, 1, 54, 0, 126, 254, 9, 210, 25, 1, 
 
 describe WOoo::Util::HexUtil do
   before(:all) do
-    @sample_file_path = File.expand_path(File.dirname(__FILE__) + "/resources/wikipedia_sample.hex")
+    @sample_8_file_path = File.expand_path(File.dirname(__FILE__) + "/resources/wikipedia_sample.hex")
+    @sample_32_file_path = File.expand_path(File.dirname(__FILE__) + "/resources/pic_sample.hex")
   end
   
   
@@ -25,7 +26,13 @@ describe WOoo::Util::HexUtil do
   
   
   it "loads an intel hex file 8-bits" do
-    WOoo::Electronics::IntelHexFile.read(@sample_file_path).should == SAMPLE_BIN_DATA
+    WOoo::Electronics::IntelHexFile.read(@sample_8_file_path).should == SAMPLE_BIN_DATA
+  end
+  
+  
+  
+  it "loads an intel hex file 32-bits" do
+    puts WOoo::Electronics::IntelHexFile.read(@sample_32_file_path).size
   end
   
   
@@ -35,7 +42,7 @@ describe WOoo::Util::HexUtil do
     WOoo::Electronics::IntelHexFile.write(@temp_file_path, SAMPLE_BIN_DATA, start_address)
     
     content = File.read(@temp_file_path)
-    expected_content = File.read(@sample_file_path)
+    expected_content = File.read(@sample_8_file_path)
     
     content.should == expected_content
   end
