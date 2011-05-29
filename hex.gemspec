@@ -5,16 +5,16 @@
 
 Gem::Specification.new do |s|
   s.name = %q{hex}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Frédéric Mascaro"]
-  s.date = %q{2011-05-22}
+  s.date = %q{2011-05-29}
   s.description = %q{Convert hex data to/from integer, and read/write Intel HEX File.}
   s.email = %q{frederic.mascaro@wo-oo.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "hex.gemspec",
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/wo_oo/util/hex.rb",
     "spec/hex_util_spec.rb",
     "spec/intel_hex_file_spec.rb",
+    "spec/resources/pic_sample.hex",
     "spec/resources/wikipedia_sample.hex",
     "spec/spec_helper.rb"
   ]
