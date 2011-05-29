@@ -29,7 +29,7 @@ module WOoo
         next_address = start_address
 
         File.open(path, "w") do |file|
-          while (line_data = data.slice!(0..16)).size > 0
+          while (line_data = data.slice!(0..15)).size > 0
             line_size = line_data.size
             
             file.print ":"
